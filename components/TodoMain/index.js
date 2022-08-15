@@ -13,8 +13,8 @@ const TodoMainComponent = () => {
     }
     return(
             <Row>
-                <Col span={12} offset={6}>
-                    <SearchInput/>
+                <Col size="large">
+                    <SearchInput />
                 </Col>
                 <Col>
                     <OpenFormButton onClickButton={()=>onClickButton()} />

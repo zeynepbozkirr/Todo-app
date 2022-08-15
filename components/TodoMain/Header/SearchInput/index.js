@@ -7,20 +7,21 @@ const onSearch = (value) => console.log(value);
 
 
 const SearchComp = () => (
-    <Space direction="vertical">
-        <Form.Item
 
+        <Form.Item
             name="Search"
             rules={[
-                {required: true
-                }
-            ]}
-        >
-           < CustomInput />
+                {
+                    required: true
+                }]}>
+           < CustomInput  allowClear
+                          enterButton
+                         placeholder={"Search"}
+           />
         </Form.Item>
 
 
-    </Space>
+
 );
 
 export default SearchComp;

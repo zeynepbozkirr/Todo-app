@@ -3,12 +3,15 @@ import 'antd/dist/antd.css';
 import { Input} from 'antd';
 
 
-const CustomInput = () => (
+const CustomInput = ({placeholder,inpValues,onchangeInput}) => (
             <Input
-                placeholder="input search text"
-                allowClear
-                enterButton
+
+                placeholder={placeholder}
+                value={inpValues}
+                size="large"
+                onchange={onchangeInput}
             />
+
 
 );
 

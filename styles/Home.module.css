@@ -1,7 +1,14 @@
 .container {
   padding: 0 2rem;
+  display: flex;
+  align-content: center;
+
 }
 
-
+.TodoMainComponent{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
 
 
