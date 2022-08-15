@@ -47,10 +47,11 @@ const FormComp = () => {
                     }
                 ]}
             >
-                <CustomInput inpValues={inpValues.content} placeholder={"Content"} onchangeInput={(e)=> {
-                    setInpValues((prevState) => ({
-                        ...prevState,
-                        content: e.target.value,
+                <CustomInput inpValues={inpValues.content} placeholder={"Content"}
+                             onchangeInput={(e)=> {
+                               setInpValues((prevState) => ({
+                                    ...prevState,
+                                   content: e.target.value,
                     }));}}
                 />
             </Form.Item>

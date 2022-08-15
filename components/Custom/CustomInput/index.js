@@ -7,9 +7,8 @@ const CustomInput = ({placeholder,inpValues,onchangeInput}) => (
             <Input
 
                 placeholder={placeholder}
-                value={inpValues}
                 size="large"
-                onchange={onchangeInput}
+                onChange={(text) => onchangeInput(text)}
             />
 
 
