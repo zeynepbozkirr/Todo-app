@@ -57,7 +57,7 @@ const FormComp = () => {
             </Form.Item>
 
             <Form.Item >
-                <CustomButton htmlType={"submit"} texts={"Send"} />
+                <CustomButton htmlType={"submit"} texts={"Send"} onch />
             </Form.Item>
         </Form>
     );

@@ -1,21 +1,11 @@
-import { makeAutoObservable } from "mobx"
+import StoreProvider from "../utils/store-provider.js";
+import TodoStore from "./todo.store";
 
+export const stores = {
 
-class TodoStore{
-    constructor() {
-        makeAutoObservable(this)
-    }
+    TodoStore,
+};
 
-    addTodo(){
-
-    }
-    editTodo(){
-
-    }
-
-    removeTodo(){
-
-    }
-}
-
-export default new TodoStore();
+Object.keys(stores).forEach((store) => {
+    StoreProvider.addStore(store, stores[store]);
+});

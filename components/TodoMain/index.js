@@ -3,6 +3,7 @@ import FormComp from "./Form"
 import {Button, Select, Row, Col} from 'antd';
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
+import ListContent from "./ListContent";
 
 const TodoMainComponent = () => {
     const [click,setClick] = useState(false)
@@ -15,6 +16,8 @@ const TodoMainComponent = () => {
             <Row>
                 <Col size="large">
                     <SearchInput />
+
+
                 </Col>
                 <Col>
                     <OpenFormButton onClickButton={()=>onClickButton()} />
@@ -25,6 +28,9 @@ const TodoMainComponent = () => {
                     </Col>
 
                 }
+                <ListContent/>
+
+
 
             </Row>
     )
