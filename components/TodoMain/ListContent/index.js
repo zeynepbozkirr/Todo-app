@@ -30,7 +30,7 @@ const ListContent = () => {
             dataSource={data}
             renderItem={(x) => (
                 <List.Item>
-                    <Card title={x.title}>Card content</Card>
+                    <Card title={x.title}>{x.title}</Card>
                 </List.Item>
             )}
         />
