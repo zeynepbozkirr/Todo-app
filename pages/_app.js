@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-// import "../store";
+ import "../store";
 // import StoreProvider from "../utils/store-provider";
 
 // const UserStore = StoreProvider.getStore("UserStore");

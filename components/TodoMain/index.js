@@ -4,6 +4,9 @@ import {Button, Select, Row, Col} from 'antd';
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
 import ListContent from "./ListContent";
+import StoreProvider from "../../utils/store-provider"
+
+const TodoStore = StoreProvider.getStore("TodoStore");
 
 const TodoMainComponent = () => {
     const [click,setClick] = useState(false)
@@ -28,7 +31,10 @@ const TodoMainComponent = () => {
                     </Col>
 
                 }
-                <ListContent/>
+                {
+                    TodoStore.firebaseDoc &&
+                    <ListContent/>
+                }
 
 
 

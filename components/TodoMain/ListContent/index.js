@@ -2,6 +2,9 @@ import React ,{useState} from "react";
 import "antd/dist/antd.css";
 import {values} from "mobx";
 import { Card, List } from 'antd';
+import StoreProvider from "../../../utils/store-provider"
+
+const TodoStore = StoreProvider.getStore("TodoStore");
 
 const ListContent = () => {
     const data = [
@@ -20,6 +23,7 @@ const ListContent = () => {
     ];
 
 
+    console.log(TodoStore.firebaseDoc,"firebasedoc")
     return(
         <div>
         <List

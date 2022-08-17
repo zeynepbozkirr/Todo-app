@@ -1,4 +1,4 @@
-import StoreProvider from "../utils/store-provider.js";
+import StoreProvider from "../utils/store-provider";
 import TodoStore from "./todo.store";
 
 export const stores = {
