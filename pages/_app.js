@@ -1,14 +1,14 @@
 import "../styles/globals.css";
- import "../store";
-// import StoreProvider from "../utils/store-provider";
 
-// const UserStore = StoreProvider.getStore("UserStore");
+//TODO: DON'T REMOVE (BURAYI SİLME)
+import '../store'
+import StoreProvider from "../utils/store-provider";
+import {observer} from "mobx-react-lite";
+
+const TodoStore = StoreProvider.getStore('TodoStore')
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+    return <Component {...pageProps} />;
 }
 
-export default MyApp
-
-
-
+export default MyApp;

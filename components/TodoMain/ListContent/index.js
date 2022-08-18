@@ -23,7 +23,7 @@ const ListContent = () => {
     ];
 
 
-    console.log(TodoStore.firebaseDoc,"firebasedoc")
+    console.log(TodoStore?.firebaseDoc,"firebasedoc")
     return(
         <div>
         <List

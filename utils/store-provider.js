@@ -3,7 +3,7 @@ class _StoreProvider {
 
     addStore(name, store) {
         if (this.stores[name]) {
-            throw new Error("same_name_store");
+            throw new Error('same_name_store');
         }
 
         this.stores[name] = store;
@@ -11,7 +11,7 @@ class _StoreProvider {
 
     getStore(name) {
         if (!this.stores[name]) {
-            throw new Error("store_not_found");
+            throw new Error('store_not_found');
         }
 
         return this.stores[name];

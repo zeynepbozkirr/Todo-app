@@ -1,15 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FormComp from "./Form"
 import {Button, Select, Row, Col} from 'antd';
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
 import ListContent from "./ListContent";
-import StoreProvider from "../../utils/store-provider"
+import { observer } from "mobx-react-lite";
+import StoreProvider from "../../utils/store-provider";
 
-const TodoStore = StoreProvider.getStore("TodoStore");
+const UserStore = StoreProvider.getStore('UserStore');
+const TodoStore = StoreProvider.getStore('TodoStore');
+
+
 
 const TodoMainComponent = () => {
     const [click,setClick] = useState(false)
+
+    const testBakalim = () => {
+        UserStore.listTodo("todos");
+    }
+
 
     const onClickButton=()=>{
         setClick (!click)
@@ -31,16 +40,16 @@ const TodoMainComponent = () => {
                     </Col>
 
                 }
-                {
-                    TodoStore.firebaseDoc &&
-                    <ListContent/>
-                }
+
+            <OpenFormButton onClickButton={() => testBakalim()}/>
+
+
 
 
 
             </Row>
     )
 }
+export default observer(TodoMainComponent);
 
-export default TodoMainComponent;
 
