@@ -34,7 +34,7 @@ class UserStore {
             runInAction(() => {
                 this.firebaseDoc = results;
             })
-            console.log(results, this.firebaseDoc, 'asd')
+            console.log(results, this.firebaseDoc, 'asd"')
         })
 
         return ()=>unsub()

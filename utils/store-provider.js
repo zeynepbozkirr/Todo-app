@@ -11,7 +11,7 @@ class _StoreProvider {
 
     getStore(name) {
         if (!this.stores[name]) {
-            throw new Error('store_not_found');
+            // throw new Error('store_not_found');
         }
 
         return this.stores[name];

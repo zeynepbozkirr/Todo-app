@@ -14,10 +14,15 @@ const SearchComp = () => (
                 {
                     required: true
                 }]}>
-           < CustomInput  allowClear
-                          enterButton
-                         placeholder={"Search"}
-           />
+           {/*< CustomInput  allowClear*/}
+           {/*               enterButton*/}
+           {/*              placeholder={"Search"}*/}
+           {/*               onchangeInput={(e)=> {*/}
+           {/*                   e.target.value()*/}
+           {/*               }*/}
+
+           {/*               }*/}
+           {/*/>*/}
         </Form.Item>
 
 

@@ -11,6 +11,7 @@ const OpenFormButton = ({onClickButton,icons,types,htmlTypes,shapes,texts}) =>{
                     shape={shapes }
                     icon={icons}
                     onClick={onClickButton}
+
             >
                 {texts}
             </Button>
