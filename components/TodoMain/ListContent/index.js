@@ -22,8 +22,8 @@ const ListContent = () => {
         },
     ];
 
+    console.log(TodoStore?.firebaseDoc,"firebasedoc");
 
-    console.log(TodoStore?.firebaseDoc,"firebasedoc")
     return(
         <div>
         <List
@@ -33,8 +33,8 @@ const ListContent = () => {
             }}
             dataSource={data}
             renderItem={(x) => (
-                <List.Item>
-                    <Card title={x.title}>{x.title}</Card>
+                <List.Item >
+                    <Card title={x.title}>{x.title} </Card>
                 </List.Item>
             )}
         />

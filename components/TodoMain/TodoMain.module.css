@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: center;
+
+}
+.search{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+
+}
+
+
+.list{
+    display: flex;
+    flex-direction:column;
+
+
+}

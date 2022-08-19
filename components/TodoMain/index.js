@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import FormComp from "./Form"
 import {Button, Select, Row, Col} from 'antd';
+import styles from "./TodoMain.module.css"
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
 import ListContent from "./ListContent";
@@ -25,29 +26,21 @@ const TodoMainComponent = () => {
         console.log(click)
     }
     return(
-            <Row>
-                <Col size="large">
-                    <SearchInput />
-
-
-                </Col>
-                <Col>
+            <div className={styles.container}>
+                  <div>
+                     <div className={styles.search}>
+                         <SearchInput />
                     <OpenFormButton onClickButton={()=>onClickButton()} />
-                </Col>
-                {
-                    click &&    <Col>
-                        <FormComp/>
-                    </Col>
+                  </div>
 
+                {click &&
+                    <FormComp/>
                 }
 
-            <OpenFormButton onClickButton={() => testBakalim()}/>
-
-
-
-
-
-            </Row>
+              {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
+           <ListContent/>
+                  </div>
+            </div>
     )
 }
 export default observer(TodoMainComponent);

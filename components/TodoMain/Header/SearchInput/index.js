@@ -6,27 +6,28 @@ const { Search } = Input;
 const onSearch = (value) => console.log(value);
 
 
-const SearchComp = () => (
+const SearchComp = () => {
+    // const onchangeInp=
+    //
+    //
+    // }
 
+       return(
         <Form.Item
             name="Search"
             rules={[
                 {
                     required: true
                 }]}>
-           {/*< CustomInput  allowClear*/}
-           {/*               enterButton*/}
-           {/*              placeholder={"Search"}*/}
-           {/*               onchangeInput={(e)=> {*/}
-           {/*                   e.target.value()*/}
-           {/*               }*/}
-
-           {/*               }*/}
-           {/*/>*/}
+           < CustomInput  allowClear
+                          enterButton
+                         placeholder={"Search"}
+                          onchangeInput={(e)=>console.log(e.target.value,"search inp") }
+           />
         </Form.Item>
 
+)
 
-
-);
+}
 
 export default SearchComp;
