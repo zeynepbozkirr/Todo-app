@@ -13,16 +13,14 @@ const TodoStore = StoreProvider.getStore('TodoStore');
 
 
 const TodoMainComponent = () => {
-    const [click,setClick] = useState(false)
+    const [click,setClick] = useState(false);
 
-    const testBakalim = () => {
-        UserStore.listTodo("todos");
-    }
 
 
     const onClickButton=()=>{
         setClick (!click)
         console.log(click)
+
     }
     return(
         <div className={styles.container}>
@@ -37,7 +35,8 @@ const TodoMainComponent = () => {
                 }
 
                 {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
-                <ListContent onClick={() => setClick(prevState => !prevState)} />
+                <ListContent onClick={() => setClick(prevState => !prevState)}
+                />
             </div>
 
         </div>

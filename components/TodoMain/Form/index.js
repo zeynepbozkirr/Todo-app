@@ -16,13 +16,14 @@ const FormComp = () => {
     const [sendValues,setSendValues]=useState()
 
 
-    const onFinish = async (values) => {
+    const onFinish = async (values,id) => {
         formRef.current.resetFields();
         if(todos?.hasOwnProperty("id")){
-            const ref=doc(db,'todos',todo.id);
+            const ref=doc(db,'todos',todos.id);
             const newTodo={title: values.Title,
                 content: values.Content,
-                status: values.Status}
+                status: values.Status
+            }
             updateDoc(ref,newTodo)
         }
         else {
