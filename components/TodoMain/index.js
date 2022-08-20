@@ -7,7 +7,6 @@ import OpenFormButton from "./Header/OpenFormButton";
 import ListContent from "./ListContent";
 import { observer } from "mobx-react-lite";
 import StoreProvider from "../../utils/store-provider";
-
 const UserStore = StoreProvider.getStore('UserStore');
 const TodoStore = StoreProvider.getStore('TodoStore');
 
@@ -38,8 +37,9 @@ const TodoMainComponent = () => {
                 }
 
               {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
-           <ListContent/>
+           <ListContent onclick={click}/>
                   </div>
+
             </div>
     )
 }

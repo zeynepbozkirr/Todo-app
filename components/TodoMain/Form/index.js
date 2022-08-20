@@ -4,25 +4,49 @@ import {Form, Select, Col,Radio, Button,Input} from "antd";
 import CustomInput from "../../Custom/CustomInput";
 import CustomButton from "../../Custom/CustomButton";
 import {values} from "mobx";
+import {addDoc,updateDoc,doc, collection} from "firebase/firestore";
+import {db} from "../../../firebase/config";
+import {useCollection} from "../../../Hooks/useCollection";
+import ListContent from "../ListContent";
 
 const FormComp = () => {
     const [form] = Form.useForm();
     const formRef = createRef();
+    const {documents:todos}=useCollection('todos');
+    const [sendValues,setSendValues]=useState()
 
 
-    const onFinish = (values) => {
-        console.log(values);
+    const onFinish = async (values) => {
         formRef.current.resetFields();
+        if(todos?.hasOwnProperty("id")){
+            const ref=doc(db,'todos',todo.id);
+            const newTodo={title: values.Title,
+                content: values.Content,
+                status: values.Status}
+            updateDoc(ref,newTodo)
+        }
+        else {
+            const ref = collection(db, "todos")
+            await addDoc(ref, {
+                title: values.Title,
+                content: values.Content,
+                status: values.Status
+            })
+        }
+
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
 
     return (
         <Form   ref={formRef}
                 name="basic"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}>
+
+
             <Form.Item
                 name="Title"
                 rules={[
@@ -66,6 +90,7 @@ const FormComp = () => {
 
             </Form.Item>
 
+            <ListContent value={values}/>
         </Form>
     );
 };

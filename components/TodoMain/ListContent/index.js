@@ -1,43 +1,54 @@
 import React ,{useState} from "react";
 import "antd/dist/antd.css";
-import {values} from "mobx";
-import { Card, List } from 'antd';
 import StoreProvider from "../../../utils/store-provider"
-
+import {useCollection} from "../../../Hooks/useCollection";
+import {doc, deleteDoc, updateDoc, collection, addDoc} from 'firebase/firestore'
+import {db} from '../../../firebase/config'
+import { EditOutlined,DeleteOutlined} from '@ant-design/icons';
 const TodoStore = StoreProvider.getStore("TodoStore");
+import {Checkbox} from "antd";
+import styles from "../TodoMain.module.css"
+import {values} from "mobx";
+import Form from "../Form";
 
-const ListContent = () => {
-    const data = [
-        {
-            title: 'Title 1',
-        },
-        {
-            title: 'Title 2',
-        },
-        {
-            title: 'Title 3',
-        },
-        {
-            title: 'Title 4',
-        },
-    ];
+const ListContent = ({onclick}) => {
+    const {documents:todos }=useCollection('todos');
 
-    console.log(TodoStore?.firebaseDoc,"firebasedoc");
+    const handleClick = async (id) => {
+        const ref = doc(db,"todos",id)
+        await deleteDoc(ref)
+    }
+
+    const CheckOnChange = async (e) => {
+        // console.log(e.target.checked,"c")
+        //    // const ref=collection(db,"todos" )
+        //    //  await addDoc(ref,{
+        //    //      star:e.target.checked
+        //    //  })
+
+        };
+
+    const handleUpdate = async (id) => {
+           onclick=true;
+        console.log(onclick,"onclik")
+
+    }
+
 
     return(
         <div>
-        <List
-            grid={{
-                gutter: 16,
-                column: 4,
-            }}
-            dataSource={data}
-            renderItem={(x) => (
-                <List.Item >
-                    <Card title={x.title}>{x.title} </Card>
-                </List.Item>
-            )}
-        />
+
+            <ul className={styles.listContentList}>
+                {todos?.map(todo => (
+                    <li className={styles.listContentListElement} key={todo.id} >
+                        {todo.title} - {todo.content} - {todo.status}
+                         <DeleteOutlined onClick={() => handleClick(todo.id)}/>
+                        <Checkbox onChange={CheckOnChange(todo.id)}>Checkbox</Checkbox>
+                        <EditOutlined onClick={() => handleUpdate}/>
+                    </li>
+                ))}
+            </ul>
+
         </div>
     )
 }

@@ -13,7 +13,20 @@
 
 .list{
     display: flex;
+    flex-direction:column
+
+}
+
+.listContentList{
+    display: flex;
     flex-direction:column;
 
 
+}
+.listContentListElement{
+    display: flex;
+    justify-content: space-around;
+    border-style: ridge;
+    border-radius:5px;
+    margin: 5px;
 }
