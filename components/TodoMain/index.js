@@ -25,22 +25,22 @@ const TodoMainComponent = () => {
         console.log(click)
     }
     return(
-            <div className={styles.container}>
-                  <div>
-                     <div className={styles.search}>
-                         <SearchInput />
+        <div className={styles.container}>
+            <div>
+                <div className={styles.search}>
+                    <SearchInput />
                     <OpenFormButton onClickButton={()=>onClickButton()} />
-                  </div>
+                </div>
 
                 {click &&
                     <FormComp/>
                 }
 
-              {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
-           <ListContent onclick={click}/>
-                  </div>
-
+                {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
+                <ListContent onClick={() => setClick(prevState => !prevState)} />
             </div>
+
+        </div>
     )
 }
 export default observer(TodoMainComponent);

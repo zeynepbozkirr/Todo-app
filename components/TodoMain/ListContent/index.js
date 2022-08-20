@@ -11,7 +11,7 @@ import styles from "../TodoMain.module.css"
 import {values} from "mobx";
 import Form from "../Form";
 
-const ListContent = ({onclick}) => {
+const ListContent = ({onClick}) => {
     const {documents:todos }=useCollection('todos');
 
     const handleClick = async (id) => {
@@ -24,13 +24,12 @@ const ListContent = ({onclick}) => {
         //    // const ref=collection(db,"todos" )
         //    //  await addDoc(ref,{
         //    //      star:e.target.checked
-        //    //  })
+        //    //x  })
 
-        };
+    };
 
     const handleUpdate = async (id) => {
-           onclick=true;
-        console.log(onclick,"onclik")
+        onClick();
 
     }
 
@@ -42,9 +41,9 @@ const ListContent = ({onclick}) => {
                 {todos?.map(todo => (
                     <li className={styles.listContentListElement} key={todo.id} >
                         {todo.title} - {todo.content} - {todo.status}
-                         <DeleteOutlined onClick={() => handleClick(todo.id)}/>
-                        <Checkbox onChange={CheckOnChange(todo.id)}>Checkbox</Checkbox>
-                        <EditOutlined onClick={() => handleUpdate}/>
+                        <DeleteOutlined onClick={() => handleClick(todo.id)}/>
+                        <Checkbox onChange={() => CheckOnChange(todo.id)}>Checkbox</Checkbox>
+                        <EditOutlined onClick={() => handleUpdate()}/>
                     </li>
                 ))}
             </ul>

@@ -88,9 +88,13 @@ const FormComp = () => {
                     Submit
                 </Button>
 
+
+
+
+
+
             </Form.Item>
 
-            <ListContent value={values}/>
         </Form>
     );
 };
