@@ -14,8 +14,10 @@ const TodoStore = StoreProvider.getStore('TodoStore');
 
 const TodoMainComponent = () => {
     const [click,setClick] = useState(false);
+    const [getId,setGetId] = useState();
 
 
+    console.log(getId)
 
     const onClickButton=()=>{
         setClick (!click)
@@ -31,11 +33,12 @@ const TodoMainComponent = () => {
                 </div>
 
                 {click &&
-                    <FormComp/>
+                    <FormComp editId={getId}/>
                 }
 
                 {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
                 <ListContent onClick={() => setClick(prevState => !prevState)}
+                             setGetId={(value)=>setGetId(value)}
                 />
             </div>
 

@@ -1,16 +1,24 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {Form, Input, Space,Row,Col} from 'antd';
 import CustomInput from "../../../Custom/CustomInput"
-const { Search } = Input;
 const onSearch = (value) => console.log(value);
+import {Form,Input} from "antd";
+import {useCollection} from "../../../../Hooks/useCollection";
 
 
 const SearchComp = () => {
-    // const onchangeInp=
-    //
-    //
-    // }
+    const {documents:todos }=useCollection('todos');
+
+    const handleChange=(e)=>{
+        console.log(todos)
+        const result =[]
+        result.push(todos.title.filter(({ title }) => title === e.target.value))
+        console.log(result,"rrrrr")
+
+    }
+
+
+
 
        return(
         <Form.Item
@@ -19,10 +27,10 @@ const SearchComp = () => {
                 {
                     required: true
                 }]}>
-           < CustomInput  allowClear
+           < Input  allowClear
                           enterButton
                          placeholder={"Search"}
-                          onchangeInput={(e)=>console.log(e.target.value,"search inp") }
+                          onChange={(e)=>handleChange(e) }
            />
         </Form.Item>
 

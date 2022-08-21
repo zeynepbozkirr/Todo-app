@@ -11,7 +11,7 @@ import styles from "../TodoMain.module.css"
 import {values} from "mobx";
 import Form from "../Form";
 
-const ListContent = ({onClick,setId,getId}) => {
+const ListContent = ({onClick,setGetId}) => {
     const {documents:todos }=useCollection('todos');
 
     const handleClick = async (id) => {
@@ -30,6 +30,7 @@ const ListContent = ({onClick,setId,getId}) => {
 
     const handleUpdate = async (id) => {
         onClick();
+        setGetId(id)
 
     }
 
@@ -42,7 +43,7 @@ const ListContent = ({onClick,setId,getId}) => {
                     <li className={styles.listContentListElement} key={todo.id} >
                         {todo.title} - {todo.content} - {todo.status}
                         <DeleteOutlined onClick={() => handleClick(todo.id)}/>
-                        <EditOutlined onClick={() => handleUpdate()}/>
+                        <EditOutlined onClick={() => handleUpdate(todo.id)}/>
                         <Checkbox onChange={() => CheckOnChange(todo.id)}>Checkbox</Checkbox>
 
                     </li>

@@ -1,30 +1,28 @@
 import React ,{useState,createRef } from "react";
 import "antd/dist/antd.css";
 import {Form, Select, Col,Radio, Button,Input} from "antd";
-import CustomInput from "../../Custom/CustomInput";
-import CustomButton from "../../Custom/CustomButton";
-import {values} from "mobx";
+
 import {addDoc,updateDoc,doc, collection} from "firebase/firestore";
 import {db} from "../../../firebase/config";
 import {useCollection} from "../../../Hooks/useCollection";
-import ListContent from "../ListContent";
 
-const FormComp = () => {
+const FormComp = ({editId}) => {
     const [form] = Form.useForm();
     const formRef = createRef();
     const {documents:todos}=useCollection('todos');
-    const [sendValues,setSendValues]=useState()
 
 
-    const onFinish = async (values,id) => {
+    const onFinish = async (values,editId) => {
         formRef.current.resetFields();
-        if(todos?.hasOwnProperty("id")){
-            const ref=doc(db,'todos',todos.id);
-            const newTodo={title: values.Title,
-                content: values.Content,
-                status: values.Status
-            }
-            updateDoc(ref,newTodo)
+        if(editId	){
+             console.log("update")
+          //   const ref=doc(db,'todos',editId);
+          //   const newTodo={
+          //       title: values.Title,
+          //       content: values.Content,
+          //       status: values.Status
+          //   }
+          // await  updateDoc(ref,newTodo)
         }
         else {
             const ref = collection(db, "todos")
@@ -33,6 +31,8 @@ const FormComp = () => {
                 content: values.Content,
                 status: values.Status
             })
+
+
         }
 
     };
@@ -47,7 +47,7 @@ const FormComp = () => {
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}>
 
-
+            {editId}
             <Form.Item
                 name="Title"
                 rules={[
