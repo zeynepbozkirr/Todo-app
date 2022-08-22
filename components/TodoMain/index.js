@@ -15,9 +15,7 @@ const TodoStore = StoreProvider.getStore('TodoStore');
 const TodoMainComponent = () => {
     const [click,setClick] = useState(false);
     const [getId,setGetId] = useState();
-
-
-    console.log(getId)
+    const [searchData, setSearchData] = useState([]);
 
     const onClickButton=()=>{
         setClick (!click)
@@ -28,7 +26,7 @@ const TodoMainComponent = () => {
         <div className={styles.container}>
             <div>
                 <div className={styles.search}>
-                    <SearchInput />
+                    <SearchInput setSearchData={(val)=>setSearchData(val)}/>
                     <OpenFormButton onClickButton={()=>onClickButton()} />
                 </div>
 
@@ -39,6 +37,7 @@ const TodoMainComponent = () => {
                 {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
                 <ListContent onClick={() => setClick(prevState => !prevState)}
                              setGetId={(value)=>setGetId(value)}
+                             searchData={searchData}
                 />
             </div>
 

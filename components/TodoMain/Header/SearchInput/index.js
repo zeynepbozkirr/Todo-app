@@ -1,26 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'antd/dist/antd.css';
 import CustomInput from "../../../Custom/CustomInput"
 const onSearch = (value) => console.log(value);
 import {Form,Input} from "antd";
 import {useCollection} from "../../../../Hooks/useCollection";
+import {collection, onSnapshot} from "firebase/firestore";
+import {db} from "../../../../firebase/config";
 
 
-const SearchComp = () => {
+const SearchComp =  ({setSearchData}) => {
     const {documents:todos }=useCollection('todos');
+    const [search,setSearch]=useState([])
+    const [allData,setAllData]=useState([])
 
-    const handleChange=(e)=>{
-        console.log(todos)
-        const result =[]
-        result.push(todos.title.filter(({ title }) => title === e.target.value))
-        console.log(result,"rrrrr")
 
+    // useEffect(()=>{
+    //     const obj=[...todos]
+    //     setAllData(obj)
+    //     console.log(allData)
+    // },[])
+
+    const handleChange=async(e)=>{
+
+        const searchData=todos.filter((x) => x.title.includes(e) ||
+                                    x.content.includes(e) )
+        setSearchData([...searchData])
     }
 
-
-
-
-       return(
+    return(
         <Form.Item
             name="Search"
             rules={[
@@ -28,9 +35,8 @@ const SearchComp = () => {
                     required: true
                 }]}>
            < Input  allowClear
-                          enterButton
                          placeholder={"Search"}
-                          onChange={(e)=>handleChange(e) }
+                          onChange={(e)=>handleChange(e.target.value) }
            />
         </Form.Item>
 
