@@ -39,25 +39,24 @@ const ListContent = ({onClick,setGetId,searchData}) => {
         <div>
 
             <ul className={styles.listContentList}>
-                {searchData? searchData.map(todo => (
-                    <li className={styles.listContentListElement} key={todo.id} >
-                        {todo.title} - {todo.content} - {todo.status}
-                        <DeleteOutlined onClick={() => handleClick(todo.id)}/>
-                        <EditOutlined onClick={() => handleUpdate(todo.id)}/>
-                        <Checkbox onChange={() => CheckOnChange(todo.id)}>Checkbox</Checkbox>
+                {todos?.map(todo => (
 
+                        <li className={styles.listContentListElement} key={todo.id}>
+                            <Checkbox  className={styles.checkbox}
+                                       onChange={() => CheckOnChange(todo.id)}></Checkbox>
+                            <div className={styles.titletext}> {todo.title} </div>
+                            <div  className={styles.Icons}>
+
+                                <DeleteOutlined  className={styles.deleteOutlined}onClick={() => handleClick(todo.id)}/>
+                                <EditOutlined  className={styles.checkbox}
+                                    onClick={() => handleUpdate(todo.id)}/>
+
+                            </div>
                     </li>
-                ))
-                    :todos.map(todo => (
-                        <li className={styles.listContentListElement} key={todo.id} >
-                            {todo.title} - {todo.content} - {todo.status}
-                            <DeleteOutlined onClick={() => handleClick(todo.id)}/>
-                            <EditOutlined onClick={() => handleUpdate(todo.id)}/>
-                            <Checkbox onChange={() => CheckOnChange(todo.id)}>Checkbox</Checkbox>
 
-                        </li>
-                    ))
-                }
+
+                ))}
+
             </ul>
 
         </div>
