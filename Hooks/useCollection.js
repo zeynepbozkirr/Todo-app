@@ -12,13 +12,10 @@ export const useCollection =(c)=>{
         let ref=collection(db,c);
 
         const unsub=onSnapshot(ref,(snapshot)=>{
-            let results=[];
-            snapshot.docs.forEach(doc=>{
-                results.push({id:doc.id,...doc.data()})
-            })
-            setDocuments(results);
+           setDocuments( snapshot.docs.map(doc=> (
+               {id:doc.id,...doc.data()}
+               )))
         })
-
         return ()=>unsub()
     }, [])
 
