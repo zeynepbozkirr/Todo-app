@@ -2,20 +2,17 @@
     display: flex;
     justify-content: center;
 
-
 }
+
 .search{
     display: flex;
     flex-direction:row;
     justify-content:space-evenly;
-
 }
-
 
 .list{
     display: flex;
     flex-direction:column
-
 }
 
 .listContentList{
@@ -23,13 +20,11 @@
     flex-direction:column;
 
 }
-.listContentdiv{
-    display: flex;
-    flex-direction:row;
-    justify-content: space-between;
-
-
-}
+/*.listContentDiv{*/
+/*    display: flex;*/
+/*    flex-direction:row;*/
+/*    justify-content: space-between;*/
+/*}*/
 
 .listContentListElement{
     display: flex;
@@ -43,8 +38,8 @@
     width: 350px;
     height: 40px;
 
-
 }
+
 .titleText{
     display: flex;
     justify-content: start;

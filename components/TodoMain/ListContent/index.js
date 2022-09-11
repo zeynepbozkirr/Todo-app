@@ -10,7 +10,6 @@ import {Checkbox, Input} from "antd";
 import styles from "../TodoMain.module.css"
 
 
-
 const ListContent = ({onClick,setGetId,searchData}) => {
     const {documents:todos}=useCollection('todos');
 
@@ -19,14 +18,15 @@ const ListContent = ({onClick,setGetId,searchData}) => {
         await deleteDoc(ref)
     }
 
-    const CheckOnChange = async (e) => {
-        // console.log(e.target.checked,"c")
-        //    // const ref=collection(db,"todos" )
-        //    //  await addDoc(ref,{
-        //    //      star:e.target.checked
-        //    //x  })
+    const CheckOnChange = async (e,id) => {
+        const ref=doc(db,'todos',id);
+
+        await updateDoc (ref,{
+             start: e
+        })
 
     };
+    console.log(todos)
 
     const handleUpdate = async (id) => {
         onClick();
@@ -40,7 +40,7 @@ const ListContent = ({onClick,setGetId,searchData}) => {
                 {searchData?.map(todo => (
                         <li className={styles.listContentListElement} key={todo.id}>
                             <Checkbox  className={styles.checkbox}
-                                       onChange={() => CheckOnChange(todo.id)}></Checkbox>
+                                       onChange={(e) => CheckOnChange(e.target.checked,todo.id)}></Checkbox>
                             <div className={styles.titleText}> {todo.title} </div>
                             <div  className={styles.Icons}>
 
