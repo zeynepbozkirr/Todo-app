@@ -17,13 +17,15 @@ const TodoMainComponent = () => {
     const [click,setClick] = useState(false);
     const [getId,setGetId] = useState();
     const [searchData, setSearchData] = useState([]);
+    const [formValues, setFormValues] = useState([]);
+
 
     const {documents:todos}=useCollection('todos');
 
     useEffect  ( () => {
         setSearchData(todos)
     }, [todos])
-
+    console.log(formValues,"formValues")
     const handleChange=async(e)=>{
         const  filterSearchData=  todos?.filter((x) => x.title.toLowerCase().includes(e) ||
             x.content.toLowerCase() .includes(e))
@@ -45,7 +47,7 @@ const TodoMainComponent = () => {
                 </div>
 
                 {click &&
-                    <FormComp editId={getId}/>
+                    <FormComp editId={getId} setFormValues={(value)=>setFormValues(value)}/>
                 }
 
                 {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}

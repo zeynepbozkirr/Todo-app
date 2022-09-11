@@ -2,19 +2,17 @@ import React, {useEffect, useState} from "react";
 import "antd/dist/antd.css";
 import StoreProvider from "../../../utils/store-provider"
 import {useCollection} from "../../../Hooks/useCollection";
-import {doc, deleteDoc, updateDoc, collection, addDoc, onSnapshot} from 'firebase/firestore'
+import {doc, deleteDoc, updateDoc} from '@firebase/firestore'
 import {db} from '../../../firebase/config'
 import { EditOutlined,DeleteOutlined} from '@ant-design/icons';
 const TodoStore = StoreProvider.getStore("TodoStore");
 import {Checkbox, Input} from "antd";
 import styles from "../TodoMain.module.css"
-import {set, values} from "mobx";
-import Form from "../Form";
+
+
 
 const ListContent = ({onClick,setGetId,searchData}) => {
     const {documents:todos}=useCollection('todos');
-
-
 
     const handleClick = async (id) => {
         const ref = doc(db,"todos",id)
@@ -33,20 +31,17 @@ const ListContent = ({onClick,setGetId,searchData}) => {
     const handleUpdate = async (id) => {
         onClick();
         setGetId(id)
-
     }
-
 
     return(
         <div>
 
             <ul className={styles.listContentList}>
                 {searchData?.map(todo => (
-
                         <li className={styles.listContentListElement} key={todo.id}>
                             <Checkbox  className={styles.checkbox}
                                        onChange={() => CheckOnChange(todo.id)}></Checkbox>
-                            <div className={styles.titletext}> {todo.title} </div>
+                            <div className={styles.titleText}> {todo.title} </div>
                             <div  className={styles.Icons}>
 
                                 <DeleteOutlined  className={styles.deleteOutlined}onClick={() => handleClick(todo.id)}/>
