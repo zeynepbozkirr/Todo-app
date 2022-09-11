@@ -9,23 +9,9 @@ import {db} from "../../../../firebase/config";
 
 
 const SearchComp =  ({setSearchData}) => {
-    const {documents:todos }=useCollection('todos');
-    const [search,setSearch]=useState([])
-    const [allData,setAllData]=useState([])
 
 
-    // useEffect(()=>{
-    //     const obj=[...todos]
-    //     setAllData(obj)
-    //     console.log(allData)
-    // },[])
 
-    const handleChange=async(e)=>{
-
-        const searchData=todos.filter((x) => x.title.includes(e) ||
-                                    x.content.includes(e) )
-        setSearchData([...searchData])
-    }
 
     return(
         <Form.Item
