@@ -45,12 +45,13 @@
 
 
 }
-.titletext{
-    display: flex;
-    justify-content: start;
-    width: 150px;
-    overflow: hidden;
-}
+/*.titletext{*/
+/*    display: flex;*/
+/*    justify-content: start;*/
+/*    width: 150px;*/
+/*    overflow: hidden;*/
+/*}*/
+
 .Icons{
     margin-top:5px ;
 

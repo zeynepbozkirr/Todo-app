@@ -6,16 +6,30 @@ import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
 import ListContent from "./ListContent";
 import { observer } from "mobx-react-lite";
-import StoreProvider from "../../utils/store-provider";
-const UserStore = StoreProvider.getStore('UserStore');
-const TodoStore = StoreProvider.getStore('TodoStore');
+import {useCollection} from "../../Hooks/useCollection";
 
+import StoreProvider from "../../utils/store-provider";
+// const UserStore = StoreProvider.getStore('UserStore');
+// const TodoStore = StoreProvider.getStore('TodoStore');
 
 
 const TodoMainComponent = () => {
     const [click,setClick] = useState(false);
     const [getId,setGetId] = useState();
     const [searchData, setSearchData] = useState([]);
+
+    const {documents:todos}=useCollection('todos');
+
+    useEffect  ( () => {
+        setSearchData(todos)
+    }, [todos])
+
+    const handleChange=async(e)=>{
+        const  filterSearchData=  todos?.filter((x) => x.title.toLowerCase().includes(e) ||
+            x.content.toLowerCase() .includes(e))
+        setSearchData(filterSearchData)
+    }
+
 
     const onClickButton=()=>{
         setClick (!click)
@@ -26,7 +40,7 @@ const TodoMainComponent = () => {
         <div className={styles.container}>
             <div>
                 <div className={styles.search}>
-                    <SearchInput setSearchData={(val)=>setSearchData(val)}/>
+                    <SearchInput handleChange={(e)=>handleChange(e)}/>
                     <OpenFormButton onClickButton={()=>onClickButton()} />
                 </div>
 

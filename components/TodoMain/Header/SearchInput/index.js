@@ -8,10 +8,7 @@ import {collection, onSnapshot} from "firebase/firestore";
 import {db} from "../../../../firebase/config";
 
 
-const SearchComp =  ({setSearchData}) => {
-
-
-
+const SearchComp =  ({handleChange}) => {
 
     return(
         <Form.Item
@@ -20,10 +17,10 @@ const SearchComp =  ({setSearchData}) => {
                 {
                     required: true
                 }]}>
-           < Input  allowClear
-                         placeholder={"Search"}
-                          onChange={(e)=>handleChange(e.target.value) }
-           />
+            < Input  allowClear
+                     placeholder={"Search"}
+                     onChange={(e)=>handleChange(e.target.value) }
+            />
         </Form.Item>
 
 )

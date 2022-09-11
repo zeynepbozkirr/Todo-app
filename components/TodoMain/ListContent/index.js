@@ -13,19 +13,8 @@ import Form from "../Form";
 
 const ListContent = ({onClick,setGetId,searchData}) => {
     const {documents:todos}=useCollection('todos');
-    const [newData,setNewData]=useState([]);
 
-       useEffect  ( () => {
-           setNewData(todos)
-    }, [todos])
 
-    const handleChange=async(e)=>{
-        const  searchData=  todos.filter((x) => x.title.toLowerCase().includes(e) ||
-            x.content.toLowerCase() .includes(e))
-        setNewData(searchData)
-    }
-
-    console.log(newData,"dccc")
 
     const handleClick = async (id) => {
         const ref = doc(db,"todos",id)
@@ -50,12 +39,9 @@ const ListContent = ({onClick,setGetId,searchData}) => {
 
     return(
         <div>
-            < Input  allowClear
-                     placeholder={"Search"}
-                     onChange={(e)=>handleChange(e.target.value) }
-            />
+
             <ul className={styles.listContentList}>
-                {newData?.map(todo => (
+                {searchData?.map(todo => (
 
                         <li className={styles.listContentListElement} key={todo.id}>
                             <Checkbox  className={styles.checkbox}
