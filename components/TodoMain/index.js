@@ -36,6 +36,9 @@ const TodoMainComponent = () => {
     const onClickButton=()=>{
         setClick (!click)
         console.log(click)
+        if(!click){
+            setGetId(null)
+        }
 
     }
     return(
