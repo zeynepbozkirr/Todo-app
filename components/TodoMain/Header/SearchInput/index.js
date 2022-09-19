@@ -17,7 +17,9 @@ const SearchComp =  ({handleChange}) => {
                 {
                     required: true
                 }]}>
-            < Input  allowClear
+            < Input
+
+                  allowClear
                      placeholder={"Search"}
                      onChange={(e)=>handleChange(e.target.value) }
             />

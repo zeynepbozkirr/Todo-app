@@ -17,8 +17,6 @@ const StartMission = ({onClick,setGetId,searchData}) => {
                     <li key={todo.id}>
                         {todo.star? null: todo.title }
 
-
-
                     </li>
 
 

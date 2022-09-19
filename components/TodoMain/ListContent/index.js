@@ -8,7 +8,7 @@ import { EditOutlined,DeleteOutlined} from '@ant-design/icons';
 const TodoStore = StoreProvider.getStore("TodoStore");
 import {Checkbox, Input} from "antd";
 import styles from "../TodoMain.module.css"
-
+import Blur from 'react-blur'
 
 const ListContent = ({onClick,setGetId,searchData}) => {
     const {documents:todos}=useCollection('todos');
@@ -36,9 +36,11 @@ const ListContent = ({onClick,setGetId,searchData}) => {
     return(
         <div>
 
-            <ul className={styles.listContentList}>
+
+            <ul  className={styles.listContentList}>
                 {searchData?.map(todo => (
-                        <li className={styles.listContentListElement} key={todo.id}>
+                    <div className={styles.listContentListElement}>
+                    <li className={styles.listContentListElementli} key={todo.id}>
                             <Checkbox  className={styles.checkbox}
                                        onChange={(e) => CheckOnChange(e.target.checked,todo.id)}></Checkbox>
                             <div className={styles.titleText}> {todo.title} </div>
@@ -51,7 +53,7 @@ const ListContent = ({onClick,setGetId,searchData}) => {
                             </div>
                     </li>
 
-
+                    </div>
                 ))}
 
             </ul>
