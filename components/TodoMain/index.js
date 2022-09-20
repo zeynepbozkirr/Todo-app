@@ -42,7 +42,7 @@ const TodoMainComponent = () => {
     }
     return(
         <div className={styles.container}>
-            <div>
+            <div  >
                 <div className={styles.search}>
                     <SearchInput handleChange={(e)=>handleChange(e)}/>
                     <OpenFormButton onClickButton={()=>onClickButton()} />

@@ -4,7 +4,10 @@ import {Form, Select, Col,Radio, Button,Input} from "antd";
 import {addDoc,updateDoc,doc, collection} from "firebase/firestore";
 import {db} from "../../../firebase/config";
 import {useCollection} from "../../../Hooks/useCollection";
+import styles from "../TodoMain.module.css";
+import {  Typography } from 'antd';
 
+const { Paragraph } = Typography;
 const FormComp = ({editId,setFormValues}) => {
     const [form] = Form.useForm();
     const formRef = createRef();
@@ -39,13 +42,16 @@ const FormComp = ({editId,setFormValues}) => {
 
 
     return (
-        <Form   ref={formRef}
+        <Form
+            className={styles.form}
+               ref={formRef}
                 name="basic"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}>
 
             {editId}
             <Form.Item
+
                 name="Title"
                 rules={[
                     {
@@ -54,7 +60,7 @@ const FormComp = ({editId,setFormValues}) => {
                     },
                 ]}
             >
-                <Input />
+                <Input className={styles.searchInput}  />
             </Form.Item>
             <Form.Item
 
@@ -66,7 +72,7 @@ const FormComp = ({editId,setFormValues}) => {
                     },
                 ]}
             >
-                <Input />
+                <Input className={styles.searchInput} />
             </Form.Item>
             <Form.Item  name="Status"
                         rules={[
@@ -74,16 +80,19 @@ const FormComp = ({editId,setFormValues}) => {
                             }
                         ]}>
 
-                <Radio.Group>
-                <Radio value="urgent">urgent </Radio>
-                <Radio value="normal">normal </Radio>
-                <Radio value="easy"> easy</Radio>
+                <Radio.Group className={styles.formRadio}>
+                <Radio className={styles.formRadio1} value="urgent">urgent </Radio>
+                <Radio  className={styles.formRadio1} value="normal">normal </Radio>
+                <Radio className={styles.formRadio1} value="easy"> easy</Radio>
 ,               </Radio.Group>
             </Form.Item>
 
-            <Form.Item>
-                <Button  type="primary" htmlType="submit" texts="submit">
-                    Submit
+            <Form.Item className={styles.formItemButton}  >
+                <Button className={styles.formButton} type="primary" htmlType="submit" texts="submit">
+                    <Paragraph  className={styles.formButtonParagraph}
+                    >
+                        SUBMIT
+                    </Paragraph>
                 </Button>
 
 

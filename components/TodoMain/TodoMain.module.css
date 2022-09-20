@@ -1,18 +1,140 @@
 .container{
     display: flex;
     justify-content: center;
-    background: transparent;
+
 }
 
 .search{
+
+
+
     display: flex;
     flex-direction:row;
     justify-content:space-evenly;
-    background:linear-gradient(45deg,#A084CA,#BFACE0);
+    margin: 20px;
+    padding: 10px;
+    background: transparent;
+}
+.searchFormItem{
+
+    /*background: rgba(255,255,255,0.2);*/
+    /*border: none;*/
+    /*border-radius: 95px;*/
+}
+.searchInput{
+    height: 50px;
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    outline: none;
+    margin-top: 3px;
+    padding: 10px 60px;
+    border-radius: 35px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-right: 1px solid rgba(255,255,255,0.2) ;
+    border-left:  1px solid rgba(255,255,255,0.2);
+
 }
 .addButton{
-    background:linear-gradient(45deg,#A084CA,#BFACE0);
-    border-style: none;
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+.addButtonParagraph{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(139, 79, 118, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) ;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-radius: 30px;
+    color: #fff;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(15px);
+}
+.addButtonParagraph:hover{
+    letter-spacing: 2px;
+}
+.addButtonParagraph::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255,255,255,0.15),
+    transparent);
+    transform: skewX(45deg) translateX(10%);
+}
+.addButtonParagraph:hover::before{
+    transform: skewX(45deg) translateX(100%);
+
+}
+.addButton::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: -5px;
+    width: 50px;
+    height: 40px;
+    background: #f00;
+    border-radius: 10px;
+    transition: 0.5s;
+    transition-delay: 0s
+
+
+}
+.addButton:hover::before{
+    bottom: -0;
+    width: 50%;
+    height: 80%;
+    border-radius: 30px;
+    transition-delay: 0.5s;
+    box-shadow: 0 0 5px #E9DAC1,
+    0 0 15px #E9DAC1,
+    0 0 30px #E9DAC1,
+    0 0 60px #E9DAC1 ;
+
+}
+.addButton::after{
+    content: "";
+    position: absolute;
+    left: 30%;
+    transform: translateY(10%);
+    top: 0px;
+    width: 20px;
+    height: 40px;
+    background: #f00;
+    border-radius: 10px;
+    transition: 0.5s;
+    transition-delay: 0s;
+    box-shadow: 0 0 5px #E9DAC1,
+    0 0 15px #E9DAC1,
+    0 0 30px #E9DAC1,
+    0 0 60px #E9DAC1 ;
+
+
+}
+.addButton:hover::after{
+    transform: translateX(-30%);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    transition-delay: 0.5s
+
 }
 
 .list{
@@ -36,12 +158,13 @@
     justify-content: space-between;
     margin: 5px;
     height: 50px;
+
 }
 
 .listContentListElement{
+    /*display: flex;*/
     margin: 10px;
     position: relative;
-    display: flex;
     justify-content: space-between;
     color: #fff;
     border-radius: 10px;
@@ -63,7 +186,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background:linear-gradient(45deg,#D7C0AE,#B7C4CF);
+    background:linear-gradient(45deg,#EEF3D2,#7D1E6A);
     filter: blur(40px);
 }
 
@@ -73,17 +196,149 @@
     justify-content: start;
     width: 150px;
     overflow: hidden;
+    background:transparent;
+
 }
 
 .Icons{
     margin-top:5px ;
+    background:transparent;
 
 }
 .checkbox{
      margin-right: 5px;
     margin-left: 20px;
+    background:transparent;
+
 
 }
 .deleteOutlined{
     margin-right: 20px;
+    background-color:transparent;
+
+}
+.form{
+    margin-bottom: 100px;
+}
+.formRadio{
+    display: flex;
+}
+.formRadio1{
+    margin-left: 15%;
+    color: #fff;
+}
+.formItemButton{
+    position: absolute;
+    margin-left: 20%;
+    margin-bottom: 20%;
+    border-radius: 30px;
+    color: #fff;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(15px);
+}
+.formButton{
+    position: relative;
+    width: 110px;
+    height: 50px;
+}
+.formButtonParagraph{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(139, 79, 118, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) ;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-radius: 30px;
+    color: #fff;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(15px);
+}
+.formButtonParagraph:hover{
+    letter-spacing: 2px;
+}
+.formButtonParagraph::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255,255,255,0.15),
+    transparent);
+    transform: skewX(45deg) translateX(10%);
+}
+.formButtonParagraph:hover::before{
+    transform: skewX(45deg) translateX(100%);
+
+}
+.formButton::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: -5px;
+    width: 50px;
+    height: 40px;
+    background: #f00;
+    border-radius: 10px;
+    transition: 0.5s;
+    transition-delay: 0s
+
+
+}
+.formButton:hover::before{
+    bottom: -0;
+    width: 50%;
+    height: 80%;
+    border-radius: 30px;
+    transition-delay: 0.5s;
+    box-shadow: 0 0 5px #E9DAC1,
+    0 0 15px #E9DAC1,
+    0 0 30px #E9DAC1,
+    0 0 60px #E9DAC1 ;
+
+}
+.formButton::after{
+    content: "";
+    position: absolute;
+    left: 30%;
+    transform: translateY(10%);
+    top: 0px;
+    width: 20px;
+    height: 40px;
+    background: #f00;
+    border-radius: 10px;
+    transition: 0.5s;
+    transition-delay: 0s;
+    box-shadow: 0 0 5px #E9DAC1,
+    0 0 15px #E9DAC1,
+    0 0 30px #E9DAC1,
+    0 0 60px #E9DAC1 ;
+
+
+}
+.formButton:hover::after{
+    transform: translateX(-30%);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    transition-delay: 0.5s
+
 }

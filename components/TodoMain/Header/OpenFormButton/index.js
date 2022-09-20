@@ -9,6 +9,7 @@ const OpenFormButton = ({onClickButton}) =>{
             < CustomButton
                 onClickButton={onClickButton}
                 shapes={"circle"}
+                texts={"ADD"}
             />
 )
 

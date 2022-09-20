@@ -7,7 +7,8 @@ body {
 }
 
 * {
-  background-image: url('/lighttheme.jpg');
+  background-image: url('/imaget.jpg');
+  /*background-color: #6A5495;*/
   box-sizing: border-box;
   z-index: 0;
 }

@@ -6,25 +6,24 @@ import {Form,Input} from "antd";
 import {useCollection} from "../../../../Hooks/useCollection";
 import {collection, onSnapshot} from "firebase/firestore";
 import {db} from "../../../../firebase/config";
-
+import styles from  "../../TodoMain.module.css"
 
 const SearchComp =  ({handleChange}) => {
 
     return(
         <Form.Item
+            className={styles.searchFormItem}
             name="Search"
             rules={[
                 {
                     required: true
                 }]}>
             < Input
-
-                  allowClear
+                   className={styles.searchInput}
                      placeholder={"Search"}
                      onChange={(e)=>handleChange(e.target.value) }
             />
         </Form.Item>
-
 )
 
 }

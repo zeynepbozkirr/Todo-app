@@ -3,8 +3,9 @@ import 'antd/dist/antd.css';
 import {Form, Input, Space, Row, Col, Button} from 'antd';
 import {PlusOutlined} from "@ant-design/icons";
 import styles from "../../TodoMain/TodoMain.module.css";
-import addicon from "../../../public/addbutton.svg"
+import {  Typography } from 'antd';
 
+const { Paragraph } = Typography;
 const OpenFormButton = ({onClickButton,icons,types,htmlTypes,shapes,texts}) =>{
 
 
@@ -18,12 +19,13 @@ const OpenFormButton = ({onClickButton,icons,types,htmlTypes,shapes,texts}) =>{
                     icon={icons}
                     onClick={onClickButton}
 
-
             >
+                <Paragraph  className={styles.addButtonParagraph}
+                >
+                    {texts}
+                </Paragraph>
 
-                <img src={addicon} />
 
-                {texts}
             </Button>
 
 

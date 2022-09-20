@@ -8,12 +8,12 @@ export default function Home() {
 
     return (
 
-        <div  >
+
 
 
                 <TodoMainComponent />
 
-        </div>
+
 
 
   )
