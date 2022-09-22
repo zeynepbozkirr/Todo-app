@@ -12,6 +12,9 @@ import StoreProvider from "../../utils/store-provider";
 import StartMission from "../StarMission/StarMission";
 // const UserStore = StoreProvider.getStore('UserStore');
 // const TodoStore = StoreProvider.getStore('TodoStore');
+import {  Typography } from 'antd';
+const { Paragraph } = Typography;
+
 
 
 const TodoMainComponent = () => {
@@ -43,7 +46,12 @@ const TodoMainComponent = () => {
     return(
         <div className={styles.container}>
             <div  >
+                <Paragraph className={styles.headerParagraph} >
+                    MY TODO
+                </Paragraph>
                 <div className={styles.search}>
+
+
                     <SearchInput handleChange={(e)=>handleChange(e)}/>
                     <OpenFormButton onClickButton={()=>onClickButton()} />
                 </div>
