@@ -4,13 +4,15 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: url('/imaget.jpg');
+
 }
 
 * {
-  background-image: url('/imaget.jpg');
-  /*background-color: #6A5495;*/
+  /*background-image: url('/imaget.jpg');*/
+  /*background:linear-gradient(45deg,#7D1E6A,#290543);*/
   box-sizing: border-box;
-  z-index: 0;
+  z-index:0;
 }
 
 

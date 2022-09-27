@@ -1,76 +1,72 @@
-import React, {useEffect, useState} from 'react';
-import FormComp from "./Form"
-import {Button, Select, Row, Col} from 'antd';
-import styles from "./TodoMain.module.css"
+import React, { useEffect, useState } from "react";
+import FormComp from "./Form";
+import { Button, Select, Row, Col, Radio } from "antd";
+import styles from "./TodoMain.module.css";
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
 import ListContent from "./ListContent";
 import { observer } from "mobx-react-lite";
-import {useCollection} from "../../Hooks/useCollection";
-
-import StoreProvider from "../../utils/store-provider";
-import StartMission from "../StarMission/StarMission";
-// const UserStore = StoreProvider.getStore('UserStore');
-// const TodoStore = StoreProvider.getStore('TodoStore');
-import {  Typography } from 'antd';
+import { useCollection } from "../../Hooks/useCollection";
+import { Typography } from "antd";
+import { values } from "mobx";
 const { Paragraph } = Typography;
 
-
-
 const TodoMainComponent = () => {
-    const [click,setClick] = useState(false);
-    const [getId,setGetId] = useState();
-    const [searchData, setSearchData] = useState([]);
+  const [click, setClick] = useState(false);
+  const [getId, setGetId] = useState(null);
+  const [searchData, setSearchData] = useState([]);
+  const [fillInputValue, setFillInputVal] = useState([]);
 
+  const { documents: todos } = useCollection("todos");
 
-    const {documents:todos}=useCollection('todos');
+  useEffect(() => {
+    setSearchData(todos);
+  }, [todos]);
 
-    useEffect  ( () => {
-        setSearchData(todos)
-    }, [todos])
-    const handleChange=async(e)=>{
-        const  filterSearchData=  todos?.filter((x) => x.title.toLowerCase().includes(e) ||
-            x.content.toLowerCase() .includes(e))
-        setSearchData(filterSearchData)
+  const handleChange = async (e) => {
+    const filterSearchData = todos?.filter(
+      (x) =>
+        x.title.toLowerCase().includes(e) || x.content.toLowerCase().includes(e)
+    );
+    setSearchData(filterSearchData);
+  };
+
+  const InputFill = (selectedId) => {
+    const filterFillInputVal = searchData?.find((x) => x.id === selectedId);
+    setFillInputVal(filterFillInputVal);
+    setClick((prevState) => !prevState);
+  };
+
+  const onClickButton = () => {
+    setClick(!click);
+    console.log(click);
+    if (!click) {
+      setGetId(null);
     }
+  };
+  return (
+    <Row className={styles.container}>
+      <Col span={16} className={styles.headerCol}>
+        <Paragraph className={styles.headerParagraph}>MY TODO</Paragraph>
+        <Col className={styles.search}>
+          <SearchInput handleChange={(e) => handleChange(e)} />
+          <OpenFormButton onClickButton={() => onClickButton()} />
+        </Col>
+      </Col>
 
-
-    const onClickButton=()=>{
-        setClick (!click)
-        console.log(click)
-        if(!click){
-            setGetId(null)
-        }
-
-    }
-    return(
-        <div className={styles.container}>
-            <div  >
-                <Paragraph className={styles.headerParagraph} >
-                    MY TODO
-                </Paragraph>
-                <div className={styles.search}>
-
-
-                    <SearchInput handleChange={(e)=>handleChange(e)}/>
-                    <OpenFormButton onClickButton={()=>onClickButton()} />
-                </div>
-
-                {click &&
-                    <FormComp editId={getId} setFormValues={(value)=>setFormValues(value)}/>
-                }
-
-                {/*<OpenFormButton onClickButton={() => testBakalim()}/>*/}
-                <ListContent onClick={() => setClick(prevState => !prevState)}
-                             setGetId={(value)=>setGetId(value)}
-                             searchData={searchData}
-                />
-                {/*<StartMission/>*/}
-            </div>
-
-        </div>
-    )
-}
+      <Col span={16} className={styles.formCol}>
+        {click && <FormComp editId={getId} fillInputValue={fillInputValue} />}
+      </Col>
+      <Col span={16} className={styles.container}>
+        <ListContent
+          setGetId={(value) => setGetId(value)}
+          searchData={searchData}
+          getId={getId}
+          InputFill={(val) => InputFill(val)}
+        />
+        {/*<StartMission/>*/}
+      </Col>
+    </Row>
+  );
+};
 export default observer(TodoMainComponent);
-
-

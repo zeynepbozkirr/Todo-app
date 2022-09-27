@@ -1,65 +1,76 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "antd/dist/antd.css";
-import StoreProvider from "../../../utils/store-provider"
-import {useCollection} from "../../../Hooks/useCollection";
-import {doc, deleteDoc, updateDoc} from '@firebase/firestore'
-import {db} from '../../../firebase/config'
-import { EditOutlined,DeleteOutlined} from '@ant-design/icons';
+import StoreProvider from "../../../utils/store-provider";
+import { useCollection } from "../../../Hooks/useCollection";
+import { doc, deleteDoc, updateDoc } from "@firebase/firestore";
+import { db } from "../../../firebase/config";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 const TodoStore = StoreProvider.getStore("TodoStore");
-import {Checkbox, Input} from "antd";
-import styles from "../TodoMain.module.css"
-import Blur from 'react-blur'
+import { Checkbox, Col, Input, Row } from "antd";
+import styles from "../TodoMain.module.css";
+import DeleteIcon from "../../../public/deleteIcon.svg";
+import UpdateIcon from "../../../public/updateIcon.svg";
 
-const ListContent = ({onClick,setGetId,searchData}) => {
-    const {documents:todos}=useCollection('todos');
+import { Typography } from "antd";
 
-    const handleClick = async (id) => {
-        const ref = doc(db,"todos",id)
-        await deleteDoc(ref)
-    }
+const { Paragraph } = Typography;
 
-    const CheckOnChange = async (e,id) => {
-        const ref=doc(db,'todos',id);
+const ListContent = ({
+  fillInputValue,
+  setFillInputVal,
+  setGetId,
+  searchData,
+  getId,
+  InputFill,
+}) => {
+  const { documents: todos } = useCollection("todos");
 
-        await updateDoc (ref,{
-             start: e
-        })
+  const handleClick = async (id) => {
+    const ref = doc(db, "todos", id);
+    await deleteDoc(ref);
+  };
 
-    };
-    console.log(todos)
+  const CheckOnChange = async (e, id) => {
+    const ref = doc(db, "todos", id);
 
-    const handleUpdate = async (id) => {
-        onClick();
-        setGetId(id)
-    }
+    await updateDoc(ref, {
+      start: e,
+    });
+  };
+  console.log(todos);
 
-    return(
-        <div>
+  const handleUpdate = (id) => {
+    setGetId(id);
+    InputFill(id);
+  };
 
-
-            <ul  className={styles.listContentList}>
-                {searchData?.map(todo => (
-                    <div className={styles.listContentListElement}>
-                    <li className={styles.listContentListElementli} key={todo.id}>
-                            <Checkbox  className={styles.checkbox}
-                                       onChange={(e) => CheckOnChange(e.target.checked,todo.id)}></Checkbox>
-                            <div className={styles.titleText}> {todo.title} </div>
-                            <div  className={styles.Icons}>
-
-                                <DeleteOutlined  className={styles.deleteOutlined}onClick={() => handleClick(todo.id)}/>
-                                <EditOutlined  className={styles.checkbox}
-                                    onClick={() => handleUpdate(todo.id)}/>
-
-                            </div>
-                    </li>
-
-                    </div>
-                ))}
-
-            </ul>
-
-        </div>
-    )
-}
+  return (
+    <Row justify="center" align="top" className={styles.container}>
+      <ul className={styles.listContentList}>
+        {searchData?.map((todo) => (
+          <Col className={styles.listContentListElement}>
+            <li className={styles.listContentListElementli} key={todo.id}>
+              <Checkbox
+                className={styles.checkbox}
+                onChange={(e) => CheckOnChange(e.target.checked, todo.id)}
+              ></Checkbox>
+              <Paragraph className={styles.titleText}> {todo.title} </Paragraph>
+              <Col className={styles.Icons}>
+                <DeleteIcon
+                  className={styles.deleteIcon}
+                  onClick={() => handleClick(todo.id)}
+                />
+                <UpdateIcon
+                  className={styles.updateIcon}
+                  onClick={() => handleUpdate(todo.id)}
+                />
+              </Col>
+            </li>
+          </Col>
+        ))}
+      </ul>
+    </Row>
+  );
+};
 
 export default ListContent;

@@ -4,11 +4,9 @@
   align-content: center;
 
 }
-
-.TodoMainComponent{
-  display: flex;
-  align-content: center;
-  flex-direction: column;
+.TodoPages{
+  background:transparent;
+  border-radius: 30px;
 }
 
 

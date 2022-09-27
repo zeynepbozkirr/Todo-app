@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.3.1",
     "antd": "^4.22.4",
     "firebase": "^9.9.2",
     "mobx": "^6.6.1",
