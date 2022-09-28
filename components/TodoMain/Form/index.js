@@ -56,7 +56,7 @@ const FormComp = ({
   };
 
   return (
-    <Row justify="center" className={styles.form}>
+    <Row justify="center" className={styles.formContainer}>
       <Form
         className={styles.form}
         ref={formRef}
