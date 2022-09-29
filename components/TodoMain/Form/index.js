@@ -83,7 +83,7 @@ const FormComp = ({
         </Col>
 
         <Col className={styles.formColInput}>
-          <Form.Item className={styles.formItemContent}>Content</Form.Item>
+          <Form.Item className={styles.formItemContent}>Detail</Form.Item>
           <Form.Item
             name="Content"
             rules={[

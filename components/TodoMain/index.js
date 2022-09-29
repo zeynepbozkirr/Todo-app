@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FormComp from "./Form";
-import { Button, Select, Row, Col, Radio } from "antd";
+import { Button, Select, Row, Col, Radio, Tooltip, Modal } from "antd";
 import styles from "./TodoMain.module.css";
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import { useCollection } from "../../Hooks/useCollection";
 import { Typography } from "antd";
 import { values } from "mobx";
+import AllList from "./AllList";
 const { Paragraph } = Typography;
 
 const TodoMainComponent = () => {
@@ -44,8 +45,12 @@ const TodoMainComponent = () => {
       setGetId(null);
     }
   };
+  console.log(searchData, "serchhh");
   return (
     <Row className={styles.container}>
+      <Col>
+        <AllList fillInputValue={fillInputValue} />
+      </Col>
       <Col span={16} className={styles.headerCol}>
         <Paragraph className={styles.headerParagraph}>MY TODO</Paragraph>
         <Col className={styles.search}>
@@ -53,17 +58,18 @@ const TodoMainComponent = () => {
           <OpenFormButton onClickButton={() => onClickButton()} />
         </Col>
       </Col>
-
       <Col span={16} className={styles.formCol}>
         {click && <FormComp editId={getId} fillInputValue={fillInputValue} />}
       </Col>
       <Col span={16} className={styles.container}>
-        <ListContent
-          setGetId={(value) => setGetId(value)}
-          searchData={searchData}
-          getId={getId}
-          InputFill={(val) => InputFill(val)}
-        />
+        {!searchData?.length == 0 ? (
+          <ListContent
+            setGetId={(value) => setGetId(value)}
+            searchData={searchData}
+            getId={getId}
+            InputFill={(val) => InputFill(val)}
+          />
+        ) : null}
         {/*<StartMission/>*/}
       </Col>
     </Row>
