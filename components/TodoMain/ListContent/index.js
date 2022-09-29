@@ -26,6 +26,7 @@ const { Paragraph, Text } = Typography;
 
 const ListContent = ({ setGetId, searchData, InputFill }) => {
   const { documents: todos } = useCollection("todos");
+  const [todoClick, setTodoClick] = useState(false);
 
   const handleClick = async (id) => {
     const ref = doc(db, "todos", id);
@@ -34,19 +35,16 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
 
   const CheckOnChange = async (e, id) => {
     const ref = doc(db, "todos", id);
-
     await updateDoc(ref, {
-      start: e,
+      do: e,
     });
+    setTodoClick(id);
   };
-  console.log(todos);
+  console.log(todoClick);
 
   const handleUpdate = (id) => {
     setGetId(id);
     InputFill(id);
-  };
-  const onclickk = () => {
-    console.log("tıklandı");
   };
 
   return (
@@ -62,12 +60,20 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
               <li className={styles.listContentListElementli} key={todo.id}>
                 <Col>
                   <Checkbox
+                    checked={todo.do}
                     className={styles.checkbox}
                     onChange={(e) => CheckOnChange(e.target.checked, todo.id)}
                   ></Checkbox>
                 </Col>
                 <Col className={styles.listText}>
-                  <Text className={styles.listTitleText}>{todo.title} </Text>
+                  <Text
+                    className={styles.listTitleText}
+                    style={{
+                      textDecoration: todo.do ? "line-through" : "",
+                    }}
+                  >
+                    {todo.title}
+                  </Text>
                   <Paragraph className={styles.listContentText}>
                     {todo.content}
                   </Paragraph>

@@ -63,14 +63,11 @@
     color: white;
     background: rgba(255,255,255,0.2);
     outline: none;
-    /*margin-top: 1px;*/
     padding: 13px 80px;
     padding-top: 13px;
     border-radius: 35px;
     border: none;
-    /*border: 1px solid rgba(255,255,255,0.5);*/
-    /*border-right: 1px solid rgba(255,255,255,0.2) ;*/
-    /*border-left:  1px solid rgba(255,255,255,0.2);*/
+
 
 }
 .addButton{
@@ -237,13 +234,18 @@
 }
 
 .checkbox{
-
     margin-left: 20px;
     margin-bottom:6px;
     background:transparent;
     display: flex;
-    /*justify-content: center;*/
     align-items: center;
+    /*display: none;*/
+}
+.checkbox:checked {
+    background: #FFD6EC;
+    color: #fff;
+    box-shadow: 0 2px 20px #0f0;
+
 }
 .listText{
     display: flex;
