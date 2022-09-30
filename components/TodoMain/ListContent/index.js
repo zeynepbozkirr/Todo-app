@@ -12,6 +12,7 @@ import { Typography } from "antd";
 const { Text } = Typography;
 
 const ListContent = ({ setGetId, searchData, InputFill }) => {
+  const text = "\n";
   const handleClick = async (id) => {
     const ref = doc(db, "todos", id);
     await deleteDoc(ref);
@@ -28,7 +29,7 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
     setGetId(id);
     InputFill(id);
   };
-  console.log("sd \n r");
+  console.log(`aa${text}aa `, "aa");
 
   return (
     <Row justify="center" align="top" className={styles.container}>
@@ -49,13 +50,13 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
           >
             <Tooltip
               placement="topLeft"
-              title={`Your Todo: ${todo.title} 
-             \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-              Detail: ${todo.content}`}
+              title={`Your Todo : ${todo.title} 
+                       Detail : ${todo.content}`}
               color={"#9B6587"}
               overlayInnerStyle={{
                 width: "150%",
-                height: "50px ",
+                height: "50% ",
+                whiteSpace: "pre-line",
               }}
             >
               <li className={styles.listContentListElementli} key={todo.id}>
