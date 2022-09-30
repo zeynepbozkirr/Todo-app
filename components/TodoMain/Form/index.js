@@ -59,8 +59,6 @@ const FormComp = ({ editId, fillInputValue }) => {
         onFinishFailed={onFinishFailed}
         form={form}
       >
-        {editId}
-
         <Col className={styles.formColInput}>
           <Form.Item className={styles.formItemTitle}>Title</Form.Item>
           <Form.Item
@@ -68,7 +66,7 @@ const FormComp = ({ editId, fillInputValue }) => {
             rules={[
               {
                 required: true,
-                message: "Please do choose!",
+                message: "Please input Title! ",
               },
             ]}
           >
@@ -83,7 +81,7 @@ const FormComp = ({ editId, fillInputValue }) => {
             rules={[
               {
                 required: true,
-                message: "Please do choose!",
+                message: "Please input Content!",
               },
             ]}
           >
@@ -96,7 +94,7 @@ const FormComp = ({ editId, fillInputValue }) => {
             rules={[
               {
                 required: true,
-                message: "Please do choose!",
+                message: "Please choose!",
               },
             ]}
             name="Status"

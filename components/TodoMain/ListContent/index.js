@@ -28,6 +28,7 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
     setGetId(id);
     InputFill(id);
   };
+  console.log("sd \n r");
 
   return (
     <Row justify="center" align="top" className={styles.container}>
@@ -38,18 +39,24 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
             style={{
               border:
                 todo.status === "urgent"
-                  ? "3px solid rgba(76, 0, 51, 1)"
+                  ? "3px solid #F37878"
                   : todo.status === "normal"
-                  ? "3px solid rgba(121, 2, 82, 1)"
+                  ? "3px solid #94B49F"
                   : todo.status === "easy"
-                  ? "3px solid rgba(175, 1, 113, 1)"
+                  ? "3px solid #F5F0BB"
                   : null,
             }}
           >
             <Tooltip
+              placement="topLeft"
               title={`Your Todo: ${todo.title} 
+             \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
               Detail: ${todo.content}`}
-              color={"#936286"}
+              color={"#9B6587"}
+              overlayInnerStyle={{
+                width: "150%",
+                height: "50px ",
+              }}
             >
               <li className={styles.listContentListElementli} key={todo.id}>
                 <Col>

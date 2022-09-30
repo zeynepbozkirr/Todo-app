@@ -26,7 +26,8 @@ const TodoMainComponent = () => {
   const handleChange = async (e) => {
     const filterSearchData = todos?.filter(
       (x) =>
-        x.title.toLowerCase().includes(e) || x.content.toLowerCase().includes(e)
+        x.title.includes(e.toLocaleLowerCase()) ||
+        x.content.includes(e.toLocaleLowerCase())
     );
     setSearchData(filterSearchData);
   };
