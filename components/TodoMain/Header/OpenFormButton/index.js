@@ -1,14 +1,14 @@
 import React from "react";
 import "antd/dist/antd.css";
+import styles from "../../TodoMain.module.css";
+import { Button, Typography } from "antd";
+const { Paragraph } = Typography;
 
-import CustomButton from "../../../Custom/CustomButton";
 const OpenFormButton = ({ onClickButton }) => {
   return (
-    <CustomButton
-      onClickButton={onClickButton}
-      shapes={"circle"}
-      texts={"ADD"}
-    />
+    <Button className={styles.addButton} shape="circle" onClick={onClickButton}>
+      <Paragraph className={styles.addButtonParagraph}>ADD</Paragraph>
+    </Button>
   );
 };
 

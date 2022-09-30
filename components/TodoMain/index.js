@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FormComp from "./Form";
-import { Button, Select, Row, Col, Radio, Tooltip, Modal } from "antd";
+import { Row, Col } from "antd";
 import styles from "./TodoMain.module.css";
 import SearchInput from "./Header/SearchInput";
 import OpenFormButton from "./Header/OpenFormButton";
@@ -8,8 +8,7 @@ import ListContent from "./ListContent";
 import { observer } from "mobx-react-lite";
 import { useCollection } from "../../Hooks/useCollection";
 import { Typography } from "antd";
-import { values } from "mobx";
-import AllList from "./AllList";
+
 const { Paragraph } = Typography;
 
 const TodoMainComponent = () => {
@@ -48,9 +47,6 @@ const TodoMainComponent = () => {
   console.log(searchData, "serchhh");
   return (
     <Row className={styles.container}>
-      <Col>
-        <AllList fillInputValue={fillInputValue} />
-      </Col>
       <Col span={16} className={styles.headerCol}>
         <Paragraph className={styles.headerParagraph}>MY TODO</Paragraph>
         <Col className={styles.search}>
@@ -70,7 +66,6 @@ const TodoMainComponent = () => {
             InputFill={(val) => InputFill(val)}
           />
         ) : null}
-        {/*<StartMission/>*/}
       </Col>
     </Row>
   );

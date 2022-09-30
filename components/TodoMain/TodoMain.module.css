@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     background: transparent;
-    /*align-items: center;*/
-
 }
 .headerCol{
     background: transparent;
@@ -15,6 +13,8 @@
 }
 
 .headerParagraph{
+    display: flex;
+    justify-content: center;
     background: transparent;
     position: relative;
     margin-top: 30px;
@@ -78,6 +78,7 @@
     background: transparent;
     border-style: none;
 
+
 }
 .addButtonParagraph{
     position: absolute;
@@ -122,30 +123,30 @@
 
 }
 .addButton::before{
-    /*content: "";*/
-    /*position: absolute;*/
-    /*left: 50%;*/
-    /*transform: translateY(-50%);*/
-    /*bottom: -5px;*/
-    /*width: 50px;*/
-    /*height: 40px;*/
-    /*background: #f00;*/
-    /*border-radius: 10px;*/
-    /*transition: 0.5s;*/
-    /*transition-delay: 0s*/
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: -5px;
+    width: 50px;
+    height: 40px;
+    background: #f00;
+    border-radius: 10px;
+    transition: 0.5s;
+    transition-delay: 0s
 
 
 }
 .addButton:hover::before{
-    /*bottom: -0;*/
-    /*width: 50%;*/
-    /*height: 80%;*/
-    /*border-radius: 30px;*/
-    /*transition-delay: 0.5s;*/
-    /*box-shadow: 0 0 5px #E9DAC1,*/
-    /*0 0 15px #E9DAC1,*/
-    /*0 0 30px #E9DAC1,*/
-    /*0 0 60px #E9DAC1 ;*/
+    bottom: -0;
+    width: 50%;
+    height: 80%;
+    border-radius: 30px;
+    transition-delay: 0.5s;
+    box-shadow: 0 0 5px #E9DAC1,
+    0 0 15px #E9DAC1,
+    0 0 30px #E9DAC1,
+    0 0 60px #E9DAC1 ;
 
 }
 .addButton::after{
@@ -156,7 +157,6 @@
     top: 0px;
     width: 20px;
     height: 40px;
-    /*background: #f00;*/
     border-radius: 10px;
     transition: 0.5s;
     transition-delay: 0s;
@@ -174,14 +174,11 @@
     height: 100%;
     border-radius: 30px;
     transition-delay: 0.5s
-
 }
 
 .list{
     display: flex;
     flex-direction:column;
-
-
 }
 
 .listContentList{
@@ -192,7 +189,6 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     width: 500px;
     padding: 20px;
-    /*background: transparent;*/
 
 }
 
@@ -212,8 +208,6 @@
     color: #fff;
     border-radius: 10px;
     border:3px solid rgba(255, 255, 255, 0.18);
-
-
 }
 
 .listContentListElement:hover{
@@ -233,39 +227,95 @@
     filter: blur(40px);
 }
 
-.checkbox{
-    margin-left: 20px;
-    margin-bottom:6px;
-    background:transparent;
-    display: flex;
-    align-items: center;
-    /*display: none;*/
-}
-.checkbox:checked {
-    background: #FFD6EC;
-    color: #fff;
-    box-shadow: 0 2px 20px #0f0;
+.listCheckbox{
+    display: none;
 
 }
 .listText{
     display: flex;
-    flex-direction:column;
-    /*justify-content: center;*/
+    justify-content: space-between;
     margin-top: 10px;
-    align-items: start;
+    align-items: center;
     width: 150px;
     overflow: hidden;
     background:transparent;
-
 }
+
 .listTitleText{
-    color: #FFD6EC;
+    color: white;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    transition: 0.5s;
+    width: 50%;
+}
+.listCheckbox:checked ~ .listTitleText{
+    color: white;
+}
 
+.listTitleText:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: #2D0543;
+    width: 100%;
+    height: 100%;
+    transition: 0.1s;
+    transition-delay: 0.1s;
 
 }
+.listCheckbox:checked ~ .listTitleText:before{
+    left:100% ;
+    transition-delay: 0s;
+}
+
+.listTitleText:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: white;
+    width: 100%;
+    height: 1px;
+    transform-origin:left ;
+    transform: scaleX(0);
+    transition: 0.1s;
+    transition-delay: 0.1s;
+}
+
+.listCheckbox:checked ~ .listTitleText:after{
+    transition-delay: 0.1s;
+    transform: scaleX(1);
+}
+
+.listIcon{
+    position: relative;
+    margin-top: 2px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    box-shadow:  0.1px 0.1px 5px rgba(255, 214, 236, 1);
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+.listIcon:before{
+    content: "x";
+    position: absolute;
+    top: -5px;
+    left: 4px;
+    transform: translateY(-100%);
+    transition: 0.1s;
+}
+.listCheckbox:checked ~.listIcon:before{
+    transform: translateY(0);
+
+}
+
 .listContentText{
     color: #EEEEEE;
-
 }
 
 .Icons{
@@ -287,6 +337,7 @@
 }
 
 .form{
+    width: 500px;
     border:1px solid rgba(255, 255, 255, 0.18);
     border-radius: 30px;
     padding: 10px;
@@ -372,16 +423,9 @@
     background: transparent;
     color: white;
 }
-.formItemButton{
-    /*position: absolute;*/
-    /*margin-left:80px ;*/
-    /*margin-bottom: 20%;*/
-    border-radius: 30px;
-}
+
 .formButton{
     position: relative;
-    /*overflow: hidden;*/
-    /*margin-left: 350px;*/
     width: 110px;
     height: 50px;
     border-width: 0;
@@ -430,32 +474,6 @@
 
 }
 
-/*.formButton::before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    left: 50%;*/
-/*    transform: translateY(-50%);*/
-/*    bottom: -5px;*/
-/*    width: 50px;*/
-/*    height: 40px;*/
-/*    background: #f00;*/
-/*    border-radius: 10px;*/
-/*    transition: 0.5s;*/
-/*    transition-delay: 0s*/
-
-/*}*/
-/*.formButton:hover::before{*/
-/*    bottom: -0;*/
-/*    width: 50%;*/
-/*    height: 80%;*/
-/*    border-radius: 30px;*/
-/*    transition-delay: 0.5s;*/
-/*    box-shadow: 0 0 5px #E9DAC1,*/
-/*    0 0 15px #E9DAC1,*/
-/*    0 0 30px #E9DAC1,*/
-/*    0 0 60px #E9DAC1 ;*/
-
-/*}*/
 .formButton::after {
     content: "";
     position: absolute;
@@ -473,9 +491,8 @@
     0 0 30px #E9DAC1,
     0 0 60px #E9DAC1 ;
 
-
-
 }
+
 .formButton:hover::after{
     transform: translateX(-30%);
     top: 0;
@@ -483,5 +500,4 @@
     height: 100%;
     border-radius: 30px;
     transition-delay: 0.5s
-
 }

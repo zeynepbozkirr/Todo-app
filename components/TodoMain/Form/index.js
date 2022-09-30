@@ -1,21 +1,15 @@
-import React, { useState, createRef, useEffect } from "react";
+import React, { createRef, useEffect } from "react";
 import "antd/dist/antd.css";
-import { Form, Select, Col, Radio, Button, Input, Row } from "antd";
+import { Form, Col, Radio, Button, Input, Row } from "antd";
 import { addDoc, updateDoc, doc, collection } from "firebase/firestore";
 import { db } from "../../../firebase/config";
 import { useCollection } from "../../../Hooks/useCollection";
 import styles from "../TodoMain.module.css";
 import { Typography } from "antd";
-import { values } from "mobx";
 
 const { Paragraph } = Typography;
 
-const FormComp = ({
-  editId,
-  setFormValues,
-  fillInputValue,
-  setFillInputVal,
-}) => {
+const FormComp = ({ editId, fillInputValue }) => {
   console.log(editId, "ED");
   useEffect(() => {
     console.log(editId, fillInputValue, "GELEn");
