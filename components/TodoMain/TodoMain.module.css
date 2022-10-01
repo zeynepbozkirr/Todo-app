@@ -8,8 +8,7 @@
     display: flex;
     justify-content: center;
     flex-direction:column;
-
-
+    width: 500px;
 }
 
 .headerParagraph{
@@ -47,15 +46,11 @@
 }
 
 .search{
+    width: 500px;
     display: flex;
-    flex-direction:row;
     justify-content:center;
     padding: 10px;
-    /*border:1px solid rgba(255, 255, 255, 0.18);*/
-    /*backdrop-filter: blur(1px);*/
-    /*-webkit-backdrop-filter: blur(10px);*/
-    /*border-radius: 20px;*/
-    /*box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);*/
+
 }
 
 
@@ -63,8 +58,9 @@
     color: white;
     background: rgba(255,255,255,0.2);
     outline: none;
-    padding: 13px 80px;
-    padding-top: 13px;
+    width: 300px;
+    height: 50px;
+    padding: 20px 20px;
     border-radius: 35px;
     border: none;
 
@@ -130,7 +126,6 @@
     bottom: -5px;
     width: 50px;
     height: 40px;
-    background: #f00;
     border-radius: 10px;
     transition: 0.5s;
     transition-delay: 0s
@@ -229,17 +224,16 @@
 
 .listCheckbox{
     display: none;
-
 }
 .listText{
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-left:5px ;
-    align-items: start;
+    /*justify-content: space-between;*/
+    align-items: center;
+    /*background: red;*/
+    /*align-items: start;*/
     height: 50px;
     overflow: hidden;
-    background:transparent;
+    /*background:transparent;*/
 }
 
 .listTitleText{
@@ -254,7 +248,7 @@
 }
 .listCheckbox:checked ~ .listTitleText{
     color: white;
-    text-decoration: line-through;
+    /*text-decoration: line-through;*/
 
 }
 
@@ -332,7 +326,8 @@
 
 .Icons{
     display: flex;
-    margin-top:5px ;
+    justify-content: center;
+    align-items: center;
     background:transparent;
 }
 .deleteIcon{
@@ -387,7 +382,8 @@
     border: none;
     outline: none;
     margin-left: 20px;
-    padding: 10px 60px;
+    width: 280px;
+    padding: 10px 20px;
     border-radius: 35px;
     border: 1px solid rgba(255,255,255,0.5);
     border-right: 1px solid rgba(255,255,255,0.2) ;
@@ -403,8 +399,9 @@
     background: rgba(255,255,255,0.2);
     border: none;
     outline: none;
-    margin-left: 10px;
-    padding: 10px 60px;
+    margin-left: 20px;
+    width: 280px;
+    padding: 10px 20px;
     border-radius: 35px;
     border: 1px solid rgba(255,255,255,0.5);
     border-right: 1px solid rgba(255,255,255,0.2) ;

@@ -102,13 +102,13 @@ const FormComp = ({ editId, fillInputValue }) => {
           >
             <Radio.Group className={styles.formRadio}>
               <Radio className={styles.formRadio1} value="urgent">
-                urgent
+                Urgent
               </Radio>
               <Radio className={styles.formRadio1} value="normal">
-                normal
+                Normal
               </Radio>
               <Radio className={styles.formRadio1} value="easy">
-                easy
+                Easy
               </Radio>
             </Radio.Group>
           </Form.Item>

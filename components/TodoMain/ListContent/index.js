@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import { useCollection } from "../../../Hooks/useCollection";
 import { doc, deleteDoc, updateDoc } from "@firebase/firestore";
 import { db } from "../../../firebase/config";
-import { Col, Row, Tooltip } from "antd";
+import { Button, Col, Popconfirm, Row, Tooltip } from "antd";
 import styles from "../TodoMain.module.css";
 import DeleteIcon from "../../../public/deleteIcon.svg";
 import UpdateIcon from "../../../public/updateIcon.svg";
@@ -52,15 +52,16 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
               placement="topLeft"
               title={`Your Todo : ${todo.title} 
                        Detail : ${todo.content}`}
-              color={"#9B6587"}
+              color="rgba(255, 222, 222, 0.3)"
               overlayInnerStyle={{
                 width: "150%",
                 height: "50% ",
                 whiteSpace: "pre-line",
               }}
+              mouseEnterDelay={0.5}
             >
               <li className={styles.listContentListElementli} key={todo.id}>
-                <Col>
+                <Col className={styles.listText}>
                   <label className={styles.listText}>
                     <input
                       type="checkbox"
@@ -73,10 +74,23 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
                   </label>
                 </Col>
                 <Col className={styles.Icons}>
-                  <DeleteIcon
-                    className={styles.deleteIcon}
-                    onClick={() => handleClick(todo.id)}
-                  />
+                  <Popconfirm
+                    placement="top"
+                    onConfirm={() => handleClick(todo.id)}
+                    okText={"Yes"}
+                    cancelText={"No"}
+                    icon={null}
+                    okType={"danger"}
+                    overlayInnerStyle={{
+                      // height: "50px",
+                      background: "rgba(255, 222, 222, 0.4)",
+                      borderRadius: "10px",
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    <DeleteIcon className={styles.deleteIcon} />
+                  </Popconfirm>
+
                   <UpdateIcon
                     className={styles.updateIcon}
                     onClick={() => handleUpdate(todo.id)}

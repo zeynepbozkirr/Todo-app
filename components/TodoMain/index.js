@@ -50,10 +50,10 @@ const TodoMainComponent = () => {
     <Row className={styles.container}>
       <Col span={16} className={styles.headerCol}>
         <Paragraph className={styles.headerParagraph}>MY TODO</Paragraph>
-        <Col className={styles.search}>
-          <SearchInput handleChange={(e) => handleChange(e)} />
-          <OpenFormButton onClickButton={() => onClickButton()} />
-        </Col>
+      </Col>
+      <Col span={16} className={styles.search}>
+        <SearchInput handleChange={(e) => handleChange(e)} />
+        <OpenFormButton onClickButton={() => onClickButton()} />
       </Col>
       <Col span={16} className={styles.formCol}>
         {click && <FormComp editId={getId} fillInputValue={fillInputValue} />}
