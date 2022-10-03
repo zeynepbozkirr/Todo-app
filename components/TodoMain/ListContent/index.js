@@ -36,6 +36,7 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
       <ul className={styles.listContentList}>
         {searchData?.map((todo) => (
           <Col
+            key={todo?.id}
             className={styles.listContentListElement}
             style={{
               border:
@@ -60,7 +61,7 @@ const ListContent = ({ setGetId, searchData, InputFill }) => {
               }}
               mouseEnterDelay={0.5}
             >
-              <li className={styles.listContentListElementli} key={todo.id}>
+              <li className={styles.listContentListElementli} key={todo?.id}>
                 <Col className={styles.listText}>
                   <label className={styles.listText}>
                     <input

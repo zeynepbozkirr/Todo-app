@@ -10,9 +10,7 @@ import { Typography } from "antd";
 const { Paragraph } = Typography;
 
 const FormComp = ({ editId, fillInputValue }) => {
-  console.log(editId, "ED");
   useEffect(() => {
-    console.log(editId, fillInputValue, "GELEn");
     if (editId) {
       form.setFieldsValue({
         Title: fillInputValue?.title,
